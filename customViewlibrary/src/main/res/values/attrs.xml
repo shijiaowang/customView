@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--状态view-->
-    <attr name="success_view" format="reference" />
-    <attr name="error_view" format="reference" />
-    <attr name="empty_view" format="reference" />
-    <attr name="no_network_view" format="reference" />
-    <attr name="loading_view" format="reference" />
     <declare-styleable name="StatusView">
-        <attr name="success_view" />
-        <attr name="error_view" />
-        <attr name="empty_view" />
-        <attr name="no_network_view" />
-        <attr name="loading_view" />
+        <attr name="success_view" format="reference" />
+        <attr name="error_view" format="reference" />
+        <attr name="empty_view" format="reference" />
+        <attr name="no_network_view" format="reference" />
+        <attr name="loading_view" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="CircleProgressView">
+        <attr name="roundBackgroundColor" format="color"/>
+        <attr name="roundBgShow" format="boolean"/>
+        <attr name="roundProgressColor" format="color"/>
+        <attr name="progressTextColor" format="color" />
+        <attr name="roundWidth" format="dimension" />
+        <attr name="progressTextSize" format="dimension"/>
+        <attr name="textShow" format="boolean"/>
+        <attr name="maxProgress" format="integer"/>
     </declare-styleable>
 </resources>
