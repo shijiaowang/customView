@@ -18,4 +18,13 @@
         <attr name="textShow" format="boolean"/>
         <attr name="maxProgress" format="integer"/>
     </declare-styleable>
+
+    <declare-styleable name="SlideCursorView">
+        <attr name="normaTextSize" format="dimension"/>
+        <attr name="selectTextSize" format="dimension"/>
+        <attr name="normalTextColor" format="color"/>
+        <attr name="selectTextColor" format="color" />
+        <attr name="normalBackgroundColor" format="color"/>
+        <attr name="selectBackgroundColor" format="color" />
+    </declare-styleable>
 </resources>
