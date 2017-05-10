@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--用于显示隐藏的-->
+    <item name="status_content_view" type="id"/>
+    <item name="status_view" type="id"/>
+    <item name="status_loading_progress_view" type="layout"/>
+    <item name="status_empty_view" type="layout"/>
+    <item name="status_error_view" type="layout"/>
+    <item name="status_no_network_view" type="layout"/>
+    <!--badgeView需要使用的-->
+    <item name="message_dot" type="drawable"/>
+</resources>

@@ -1,0 +1,30 @@
+package com.wangyang.diyviewlibrary;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+
+import com.wangyang.divviewlibrary.view.bezierlayout.LiveBezierLayout;
+import com.wangyang.divviewlibrary.view.pathanim.AnimationManager;
+import com.wangyang.divviewlibrary.view.pathanim.AnimationPath;
+
+public class MainActivity extends AppCompatActivity {
+
+    private LiveBezierLayout liveBezierLayout;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        liveBezierLayout = (LiveBezierLayout) findViewById(R.id.lbl);
+        liveBezierLayout.init(R.drawable.love,R.drawable.love2,R.drawable.love3);
+    }
+    public void button(View view){
+        liveBezierLayout.addView();
+    }
+   public void imageClick(View view){
+       AnimationPath build = new AnimationPath.Builder().moveTo(0,0).cubicTo(0, 150,150, 0,300, 300).lineTo(-100,-300).quadTo(400,200,200,500).build();
+       AnimationManager animationManager=new AnimationManager(view);
+       animationManager.startAnimation(build,3000);
+   }
+}
