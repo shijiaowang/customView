@@ -47,6 +47,7 @@ public class NeonLightsTextView extends TextView {
     private float rightMoveLimit;
     private boolean isReversal;
     private int reversalNumber=1;
+    private String preText;
 
 
     public NeonLightsTextView(Context context) {
@@ -76,6 +77,7 @@ public class NeonLightsTextView extends TextView {
         super.onSizeChanged(w, h, oldw, oldh);
 
         calculateShader();
+
     }
 
     /**
@@ -83,6 +85,9 @@ public class NeonLightsTextView extends TextView {
      */
     private void calculateShader() {
         String text = getText().toString();
+        if (text.equals(preText)){
+            return;
+        }
         //总宽度
         textWidth = getPaint().measureText(text);
         Rect rect = new Rect();
@@ -114,6 +119,7 @@ public class NeonLightsTextView extends TextView {
             }
         }
         changeShader();
+        preText =text;
     }
 
     @Override
@@ -164,7 +170,7 @@ public class NeonLightsTextView extends TextView {
     private void moveTranslate() {
         currentTranslate += moveSpeed;
         if (currentTranslate > rightMoveLimit || currentTranslate < 1) {
-            if (isReversal) {//如果反转显示
+            if (isReversal) {//反转显示
                 moveSpeed = -moveSpeed;
             } else {//不反转
                 currentTranslate = 1;
@@ -192,5 +198,13 @@ public class NeonLightsTextView extends TextView {
             reversalNumber=-reversalNumber;
         }
         return currentLine+reversalNumber;
+    }
+
+    @Override
+    protected void onTextChanged(CharSequence text, int start, int lengthBefore, int lengthAfter) {
+        super.onTextChanged(text, start, lengthBefore, lengthAfter);
+        if (colors!=null) {//防止 xml 设置的时候重复执行
+            calculateShader();
+        }
     }
 }

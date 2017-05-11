@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
          findViewById(R.id.neno).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((NeonLightsTextView) v).setTextColor(Color.BLACK);
+                ((NeonLightsTextView) v).setText("哈会计法哈啊哈那三六九等哈世界的哈睡觉了洪都拉斯嘉华大厦垃圾袋哈老司机洪都拉斯就好了哈市德令哈世界的哈罗闪第六届阿什顿了哈私搭乱建哈实力倒还辣椒水的了解");
             }
         });
         final CircleProgressView circleProgressView = (CircleProgressView) findViewById(R.id.progress);

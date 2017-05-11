@@ -40,7 +40,7 @@
         android:textColor="@color/colorAccent"
         app:isSingleMove="true"
         app:isReversal="true"
-        android:paddingLeft="10dp"
+        android:padding="30dp"
         android:text="asdhaosoashdouashdewsfdasddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddooooooooooooooooooooooooaosdasfasf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
