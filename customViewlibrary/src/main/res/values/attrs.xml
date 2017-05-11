@@ -8,23 +8,34 @@
         <attr name="no_network_view" format="reference" />
         <attr name="loading_view" format="reference" />
     </declare-styleable>
+    <!--圆形进度条-->
     <declare-styleable name="CircleProgressView">
-        <attr name="roundBackgroundColor" format="color"/>
-        <attr name="roundBgShow" format="boolean"/>
-        <attr name="roundProgressColor" format="color"/>
+        <attr name="roundBackgroundColor" format="color" />
+        <attr name="roundBgShow" format="boolean" />
+        <attr name="roundProgressColor" format="color" />
         <attr name="progressTextColor" format="color" />
         <attr name="roundWidth" format="dimension" />
-        <attr name="progressTextSize" format="dimension"/>
-        <attr name="textShow" format="boolean"/>
-        <attr name="maxProgress" format="integer"/>
+        <attr name="progressTextSize" format="dimension" />
+        <attr name="textShow" format="boolean" />
+        <attr name="maxProgress" format="integer" />
     </declare-styleable>
-
+    <!--字母索引-->
     <declare-styleable name="SlideCursorView">
-        <attr name="normaTextSize" format="dimension"/>
-        <attr name="selectTextSize" format="dimension"/>
-        <attr name="normalTextColor" format="color"/>
+        <attr name="normaTextSize" format="dimension" />
+        <attr name="selectTextSize" format="dimension" />
+        <attr name="normalTextColor" format="color" />
         <attr name="selectTextColor" format="color" />
-        <attr name="normalBackgroundColor" format="color"/>
+        <attr name="normalBackgroundColor" format="color" />
         <attr name="selectBackgroundColor" format="color" />
     </declare-styleable>
+    <!--霓虹灯-->
+    <declare-styleable name="NeonLightsTextView">
+        <attr name="neonLightsColor" format="color" /><!--霓虹灯中间的颜色-->
+        <attr name="isSingleMove" format="boolean" /><!--是否是一行一行移动-->
+        <attr name="moveSpeed" format="integer" /><!--霓虹灯速度-->
+        <attr name="neonLightsNumber" format="integer" /><!--霓虹灯显示的文字个数-->
+        <attr name="isReversal" format="boolean" /><!--是否反转显示-->
+
+    </declare-styleable>
+
 </resources>

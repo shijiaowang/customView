@@ -1,10 +1,12 @@
 package com.wangyang.diyviewlibrary;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import com.wangyang.divviewlibrary.view.bezierlayout.LiveBezierLayout;
+import com.wangyang.divviewlibrary.view.neonlights.NeonLightsTextView;
 import com.wangyang.divviewlibrary.view.pathanim.AnimationManager;
 import com.wangyang.divviewlibrary.view.pathanim.AnimationPath;
 import com.wangyang.divviewlibrary.view.progress.CircleProgressView;
@@ -20,6 +22,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         liveBezierLayout = (LiveBezierLayout) findViewById(R.id.lbl);
         liveBezierLayout.init(R.drawable.love,R.drawable.love2,R.drawable.love3);
+         findViewById(R.id.neno).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((NeonLightsTextView) v).setTextColor(Color.BLACK);
+            }
+        });
         final CircleProgressView circleProgressView = (CircleProgressView) findViewById(R.id.progress);
         circleProgressView.setOnClickListener(new View.OnClickListener() {
 

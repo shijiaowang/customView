@@ -34,4 +34,14 @@
         android:layout_gravity="right"
         android:layout_width="50dp"
         android:layout_height="50dp" />
+    <com.wangyang.divviewlibrary.view.neonlights.NeonLightsTextView
+        android:id="@+id/neno"
+        android:layout_gravity="bottom"
+        android:textColor="@color/colorAccent"
+        app:isSingleMove="true"
+        app:isReversal="true"
+        android:paddingLeft="10dp"
+        android:text="asdhaosoashdouashdewsfdasddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddooooooooooooooooooooooooaosdasfasf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </FrameLayout>
