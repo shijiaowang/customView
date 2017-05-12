@@ -37,5 +37,15 @@
         <attr name="isReversal" format="boolean" /><!--是否反转显示-->
 
     </declare-styleable>
+    <!--放大镜-->
+    <declare-styleable name="MagnifierView">
+        <attr name="magnifierCanMove" format="boolean" /><!--是否跟随手指移动-->
+        <!--以下两个属性最好使用在放大镜固定不动的情况-->
+        <attr name="magnifierPaddingTop" format="dimension" /><!--放大镜初始值距离上方的位置-->
+        <attr name="magnifierPaddingLeft" format="dimension" /><!--放大镜初始值距离左方的位置-->
+        <attr name="magnifierRadius" format="integer" /><!--放大镜的半径-->
+        <attr name="magnifierScale" format="float" /><!--放大镜放大倍数-->
+
+    </declare-styleable>
 
 </resources>

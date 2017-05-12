@@ -70,11 +70,17 @@ public class CommonUtils {
     }
 
     // /////////////////dip和px转换//////////////////////////
-    static public int getScreenWidthPixels(Context context) {
+    public static  int getScreenWidthPixels(Context context) {
         DisplayMetrics dm = new DisplayMetrics();
         ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay()
                 .getMetrics(dm);
         return dm.widthPixels;
+    }
+    public static  int getScreenHeightPixels(Context context) {
+        DisplayMetrics dm = new DisplayMetrics();
+        ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay()
+                .getMetrics(dm);
+        return dm.heightPixels;
     }
     public static float getScreenDensity(Context context) {
         try {

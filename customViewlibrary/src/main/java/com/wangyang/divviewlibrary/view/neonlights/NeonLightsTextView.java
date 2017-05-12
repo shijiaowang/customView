@@ -103,7 +103,7 @@ public class NeonLightsTextView extends TextView {
             colors = new int[]{currentTextColor, neonLightsColor, currentTextColor};
         }
         //单行走马灯效果
-        if (isSingleMove && getLineCount() > 1) {
+        if (needSingleMove()) {
             lineTextMessages = new LineTextMessage[getLineCount()];
             Layout layout = getLayout();
             for (int i = 0; i < getLineCount(); i++) {
@@ -120,6 +120,14 @@ public class NeonLightsTextView extends TextView {
         }
         changeShader();
         preText =text;
+    }
+
+    /**
+     * 是否需要单行移动
+     * @return
+     */
+    private boolean needSingleMove() {
+        return isSingleMove && getLineCount() > 1;
     }
 
     @Override
@@ -175,7 +183,7 @@ public class NeonLightsTextView extends TextView {
             } else {//不反转
                 currentTranslate = 1;
             }
-            if (isSingleMove) {//对最后一行进行特殊处理
+            if (needSingleMove()) {//对最后一行进行特殊处理
                 currentLine = isReversal ? getReversalLine() : (currentLine + 1) % lineTextMessages.length;
                 rightMoveLimit = currentLine == lineTextMessages.length - 1 ? lastWidth + neonLigthsWidth : singleLineWidth + neonLigthsWidth;
                 currentTranslate = currentLine == lineTextMessages.length - 1 ? getReversalTranslate() : currentTranslate;
@@ -203,7 +211,7 @@ public class NeonLightsTextView extends TextView {
     @Override
     protected void onTextChanged(CharSequence text, int start, int lengthBefore, int lengthAfter) {
         super.onTextChanged(text, start, lengthBefore, lengthAfter);
-        if (colors!=null) {//防止 xml 设置的时候重复执行
+        if (colors!=null) {//防止初始化中 进行了计算
             calculateShader();
         }
     }

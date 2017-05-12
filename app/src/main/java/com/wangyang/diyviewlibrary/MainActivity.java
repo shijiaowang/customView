@@ -1,11 +1,13 @@
 package com.wangyang.diyviewlibrary;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import com.wangyang.divviewlibrary.view.bezierlayout.LiveBezierLayout;
+import com.wangyang.divviewlibrary.view.magnifier.MagnifierView;
 import com.wangyang.divviewlibrary.view.neonlights.NeonLightsTextView;
 import com.wangyang.divviewlibrary.view.pathanim.AnimationManager;
 import com.wangyang.divviewlibrary.view.pathanim.AnimationPath;
@@ -15,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     private int progress;
     private LiveBezierLayout liveBezierLayout;
+    private MagnifierView magnifierView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,14 +55,23 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        startActivity(new Intent(this,Main2Activity.class));
     }
     public void button(View view){
         liveBezierLayout.addView();
+       // magnifierView.setView(findViewById(android.R.id.content));
     }
    public void imageClick(View view){
+
        AnimationPath build = new AnimationPath.Builder().moveTo(0,0).cubicTo(0, 150,150, 0,300, 300).lineTo(-100,-300).quadTo(400,200,200,500).build();
        AnimationManager animationManager=new AnimationManager(view);
        animationManager.startAnimation(build,3000);
 
    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
 }

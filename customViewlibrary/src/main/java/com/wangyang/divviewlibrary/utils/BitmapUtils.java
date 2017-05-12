@@ -15,6 +15,7 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.DocumentsContract;
@@ -331,5 +332,20 @@ public class BitmapUtils {
         }
 
         return inSampleSize;
+    }
+    //使用Bitmap加Matrix来缩放
+    public static Bitmap resizeImage(Bitmap bitmap, float w, float h)
+    {
+        Bitmap BitmapOrg = bitmap;
+        int width = BitmapOrg.getWidth();
+        int height = BitmapOrg.getHeight();
+        float scaleWidth =  w / width;
+        float scaleHeight =  h / height;
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleWidth, scaleHeight);
+        // if you want to rotate the Bitmap
+        // matrix.postRotate(45);
+        return Bitmap.createBitmap(BitmapOrg, 0, 0, width,
+                height, matrix, true);
     }
 }
