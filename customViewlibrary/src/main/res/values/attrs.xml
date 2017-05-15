@@ -59,4 +59,12 @@
         <attr name="onceTime" format="integer" /><!--多久秒旋转一次-->
         <attr name="isStartScan" format="boolean" /><!--默认是否开启扫描-->
     </declare-styleable>
+    <!--心电图view-->
+    <declare-styleable name="HeartElectricView">
+        <attr name="heartMap" format="reference" /><!--心电图-->
+        <attr name="heartColor" format="color" /><!--心电图颜色-->
+        <attr name="heartBgColor" format="color" /><!--心电图背景颜色-->
+        <attr name="heartTime" format="integer" /><!--心电图多长时间绘制一次-->
+        <attr name="heartSpeed" format="float" /><!--心电图增量，速度-->
+    </declare-styleable>
 </resources>
