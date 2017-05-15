@@ -43,9 +43,20 @@
         <!--以下两个属性最好使用在放大镜固定不动的情况-->
         <attr name="magnifierPaddingTop" format="dimension" /><!--放大镜初始值距离上方的位置-->
         <attr name="magnifierPaddingLeft" format="dimension" /><!--放大镜初始值距离左方的位置-->
+
         <attr name="magnifierRadius" format="integer" /><!--放大镜的半径-->
         <attr name="magnifierScale" format="float" /><!--放大镜放大倍数-->
 
     </declare-styleable>
-
+    <!--雷达扫描view-->
+    <declare-styleable name="RadarView">
+        <attr name="startColor" format="color" /><!--雷达扫描开始颜色-->
+        <attr name="endColor" format="color" /><!--雷达扫描结束颜色-->
+        <attr name="backgroundColor" format="color" /><!--雷达背景颜色-->
+        <attr name="circleNum" format="integer" /><!--雷达中共有几个圆环-->
+        <attr name="lineColor" format="color" /><!--雷达圆环的颜色-->
+        <attr name="scanRotate" format="float" /><!--每次旋转增加的角度-->
+        <attr name="onceTime" format="integer" /><!--多久秒旋转一次-->
+        <attr name="isStartScan" format="boolean" /><!--默认是否开启扫描-->
+    </declare-styleable>
 </resources>
