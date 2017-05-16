@@ -9,7 +9,6 @@ import android.content.Context;
 import android.graphics.PointF;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
@@ -69,7 +68,10 @@ public class LiveBezierLayout extends RelativeLayout {
      * 初始化
      * @param drawableIds 需要显示的图片id集合
      */
-    public void init(@NonNull int ...drawableIds) {
+    public void init(int ...drawableIds) {
+        if (drawableIds==null || drawableIds.length==0){
+            throw  new IllegalArgumentException("params must have drawable ids");
+        }
         drawables=new Drawable[drawableIds.length];
         for (int i = 0;i<drawableIds.length;i++){
             drawables[i]= getDrawable(drawableIds[i]);

@@ -67,4 +67,17 @@
         <attr name="heartTime" format="integer" /><!--心电图多长时间绘制一次-->
         <attr name="heartSpeed" format="float" /><!--心电图增量，速度-->
     </declare-styleable>
+    <!--刮刮卡效果view-->
+    <declare-styleable name="ScratchCardView">
+
+        <attr name="resultBitmap" format="reference" /><!--显示的结果图片-->
+        <attr name="resultString" format="string" /><!--显示的结果的文字-->
+        <attr name="resultStringColor" format="color" /><!--显示的结果的文字的颜色-->
+        <attr name="resultStringSize" format="float" /><!--显示的结果的文字的颜色-->
+        <attr name="pathWidth" format="float" /><!--一次性刮的宽度-->
+        <!--之下选项二选一-->
+        <attr name="hoverBitmap" format="reference" /><!--表面覆盖的遮罩-->
+        <attr name="hoverColor" format="color" /><!--表面覆盖的遮罩-->
+
+    </declare-styleable>
 </resources>

@@ -5,8 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.wangyang.diyviewlibrary.Main3Activity">
-    <com.wangyang.divviewlibrary.view.heartelectric.HeartElectricView
+    <!--<com.wangyang.divviewlibrary.view.heartelectric.HeartElectricView
         app:heartMap="@drawable/heartmap"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"/>-->
+    <com.wangyang.divviewlibrary.view.scratchcard.ScratchCardView
+        app:hoverColor="@color/colorPrimary"
+        app:resultBitmap="@drawable/xyjy"
+        app:resultString="恭喜你中了武藤兰"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </RelativeLayout>
