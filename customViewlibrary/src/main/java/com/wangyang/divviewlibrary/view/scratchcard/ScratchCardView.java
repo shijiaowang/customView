@@ -1,6 +1,7 @@
 package com.wangyang.divviewlibrary.view.scratchcard;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,6 +18,8 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.wangyang.divviewlibrary.R;
+import com.wangyang.divviewlibrary.utils.BitmapUtils;
+import com.wangyang.divviewlibrary.utils.CommonUtils;
 import com.wangyang.divviewlibrary.utils.StringUtils;
 
 import java.lang.ref.SoftReference;
@@ -132,6 +135,79 @@ public class ScratchCardView extends View {
     }
     private boolean softNotNull(SoftReference<Bitmap> softReference){
         return softReference!=null && softReference.get()!=null;
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        //不支持padding
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+        if (widthMode == MeasureSpec.EXACTLY && heightMode== MeasureSpec.EXACTLY){
+            super.onMeasure(widthMeasureSpec,heightMeasureSpec);
+        }else if(softNotNull(softResult)){
+            Bitmap bitmap = softResult.get();
+            int width = bitmap.getWidth();
+            int height = bitmap.getHeight();
+            int mayWidth = widthMode == MeasureSpec.EXACTLY?widthSize: CommonUtils.getScreenWidthPixels(getContext());
+            int mayHeight =heightMode== MeasureSpec.EXACTLY?heightSize:CommonUtils.getScreenHeightPixels(getContext());
+            if (width>mayWidth || height>mayHeight){
+                //如果有一个超过最大宽度，进行压缩
+                float minScale = getMinScale(width, height, mayWidth, mayHeight);
+                width= widthMode == MeasureSpec.EXACTLY?mayWidth:(int) (width* minScale);
+                height=heightMode== MeasureSpec.EXACTLY?heightSize:(int) (height* minScale);
+            }
+            setMeasuredDimension(width,height);
+        }else {
+            super.onMeasure(0, 0);
+        }
+    }
+
+    private float getMinScale(int width, int height, int mayWidth, int mayHeight) {
+        float widthScale=mayWidth*1.0f/width;
+        float heightScale = mayHeight*1.0f/height;
+        return Math.min(widthScale, heightScale);
+    }
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        if (softNotNull(softResult)){
+            int bitWidth = softResult.get().getWidth();
+            int bitHeight = softResult.get().getHeight();
+            if (bitHeight == h && bitWidth==w){
+                return;
+            }
+            Bitmap bitmap = softResult.get();
+            float minScale = getMinScale(bitWidth, bitHeight, w, h);
+            Bitmap newBitmap = BitmapUtils.resizeImage(bitmap, bitWidth * minScale, bitHeight * minScale);
+            resetBitmap(newBitmap);
+            //如果遮罩的大小不一样，也进行修改
+            if (softNotNull(softHover)){
+                Bitmap hoverBitmap = softHover.get();
+                if (hoverBitmap.getWidth() ==newBitmap.getWidth() && hoverBitmap.getHeight() == newBitmap.getHeight()){
+                    return;
+                }
+                Bitmap newHoverBitmap = BitmapUtils.resizeImage(hoverBitmap, newBitmap.getWidth(), newBitmap.getHeight());
+                softHover.get().recycle();
+                softHover=new SoftReference<Bitmap>(newHoverBitmap);
+            }
+        }
+    }
+   public void setRes(int res){
+       Bitmap bitmap = BitmapFactory.decodeResource(getResources(),res);
+       if (bitmap==null){
+           throw new Resources.NotFoundException("cannot find this Resources");
+       }
+       resetBitmap(bitmap);
+       requestLayout();
+   }
+    private void resetBitmap(Bitmap bitmap) {
+
+            if (softNotNull(softResult)) {
+                softResult.get().recycle();
+            }
+        softResult=new SoftReference<Bitmap>(bitmap);
     }
 
     @Override
