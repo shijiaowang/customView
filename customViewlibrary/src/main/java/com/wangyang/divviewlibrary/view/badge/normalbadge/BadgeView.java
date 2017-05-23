@@ -1,4 +1,4 @@
-package com.wangyang.divviewlibrary.view.badge;
+package com.wangyang.divviewlibrary.view.badge.normalbadge;
 
 /**
  * Created by wangyang on 2017/5/10.
