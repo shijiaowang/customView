@@ -80,6 +80,7 @@
         <attr name="hoverColor" format="color" /><!--表面覆盖的遮罩-->
 
     </declare-styleable>
+    <!--QQ消息气泡-->
     <declare-styleable name="QQBadgeView">
         <attr name="badgeBackgroundColor" format="color"/><!--消息气泡背景颜色-->
         <attr name="badgeTextColor" format="color"/><!--消息字体颜色-->
@@ -90,5 +91,16 @@
         <attr name="badgeDragBackAnimDuration" format="integer"/><!--回弹动画时间-->
         <attr name="badgeDragDismissAnimDuration" format="integer"/><!--消失动画执行时间-->
         <attr name="badgeDragDismissCount" format="integer"/><!--消失动画执行次数-->
+    </declare-styleable>
+    <!--水波纹view-->
+    <declare-styleable name="WaveView">
+        <attr name="waveLength" format="integer"/><!--一个水波纹的长度-->
+        <attr name="waveHeight" format="integer"/><!--水波纹波峰的高度-->
+        <attr name="waveSpeed" format="integer"/><!--水波纹移动的速度-->
+        <attr name="waveColor" format="color"/><!--水浪的颜色-->
+        <attr name="isDrawProgress" format="boolean"/><!--是否显示进度条-->
+        <attr name="waveProgressColor" format="color"/><!--进度条的颜色-->
+        <attr name="waveTextSize" format="float"/><!--进度条尺寸大小-->
+        <attr name="drawTime" format="integer"/><!--多久绘制一次-->
     </declare-styleable>
 </resources>
