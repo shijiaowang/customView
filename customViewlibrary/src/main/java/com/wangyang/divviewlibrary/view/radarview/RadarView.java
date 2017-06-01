@@ -106,7 +106,7 @@ public class RadarView extends View{
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         int heightSize = MeasureSpec.getSize(heightMeasureSpec);
-        int width=0,height=0;
+        int width,height;
         if (widthMode == MeasureSpec.EXACTLY && heightMode ==MeasureSpec.EXACTLY){
             width=widthSize;
             height=heightSize;

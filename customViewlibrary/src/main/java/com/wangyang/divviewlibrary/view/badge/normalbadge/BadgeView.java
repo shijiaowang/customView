@@ -43,7 +43,7 @@ public class BadgeView extends TextView {
 
     private void init() {
         if (!(getLayoutParams() instanceof LayoutParams)) {
-            int dimension = (int) getContext().getResources().getDimension(R.dimen.x12);
+            int dimension = (int) getContext().getResources().getDimension(R.dimen.x12sp);
             LayoutParams layoutParams =
                     new LayoutParams(
                             dimension,

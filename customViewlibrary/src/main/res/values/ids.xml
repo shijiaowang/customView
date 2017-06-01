@@ -9,4 +9,8 @@
     <item name="status_no_network_view" type="layout"/>
     <!--badgeView需要使用的-->
     <item name="message_dot" type="drawable"/>
+
+    <!--假状态栏-->
+    <item name="statusbar_view" type="id"/>
+    <item name="translucent_view" type="id"/>
 </resources>

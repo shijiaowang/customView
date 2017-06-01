@@ -81,7 +81,7 @@ public class ScratchCardView extends View {
             int hoverId = ta.getResourceId(R.styleable.ScratchCardView_hoverBitmap,-1);
             hoverColor = ta.getColor(R.styleable.ScratchCardView_hoverBitmap, Color.parseColor("#e0e0e0"));
             resultStringColor = ta.getColor(R.styleable.ScratchCardView_resultStringColor, Color.RED);
-            resultStringSize = ta.getFloat(R.styleable.ScratchCardView_resultStringSize,R.dimen.x12);
+            resultStringSize = ta.getFloat(R.styleable.ScratchCardView_resultStringSize,R.dimen.x12sp);
             pathWidth = ta.getFloat(R.styleable.ScratchCardView_pathWidth,20);
             resultText = ta.getString(R.styleable.ScratchCardView_resultString);
             Bitmap resultBitmap = getBitmap(resultId);

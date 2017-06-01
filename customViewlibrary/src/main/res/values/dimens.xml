@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="x12">12sp</dimen>
+    <dimen name="x12sp">12sp</dimen>
+    <dimen name="x25">25dp</dimen>
 </resources>

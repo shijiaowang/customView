@@ -54,7 +54,7 @@ public class CircleProgressView extends View {
         roundColor = typedArray.getColor(R.styleable.CircleProgressView_roundBackgroundColor, Color.RED);
         roundProgressColor = typedArray.getColor(R.styleable.CircleProgressView_roundProgressColor, Color.BLUE);
         int textColor = typedArray.getColor(R.styleable.CircleProgressView_progressTextColor, Color.parseColor("#646464"));
-        float textSize = typedArray.getDimension(R.styleable.CircleProgressView_progressTextSize, getResources().getDimension(R.dimen.x12));
+        float textSize = typedArray.getDimension(R.styleable.CircleProgressView_progressTextSize, getResources().getDimension(R.dimen.x12sp));
         roundWidth = typedArray.getDimension(R.styleable.CircleProgressView_roundWidth, 10);
         textShow = typedArray.getBoolean(R.styleable.CircleProgressView_textShow, true);
         roundBgShow = typedArray.getBoolean(R.styleable.CircleProgressView_roundBgShow, true);

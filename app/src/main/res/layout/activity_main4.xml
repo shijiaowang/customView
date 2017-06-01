@@ -5,8 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.wangyang.diyviewlibrary.Main4Activity">
-<com.wangyang.divviewlibrary.view.badge.qqmessage.QQBadgeView
+<!--<com.wangyang.divviewlibrary.view.badge.qqmessage.QQBadgeView
     android:layout_centerInParent="true"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+    android:layout_height="wrap_content" />-->
+    <com.wangyang.divviewlibrary.view.mapview.PathMapView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </RelativeLayout>

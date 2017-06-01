@@ -7,7 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -52,7 +51,7 @@ public class SlideCursorView extends View {
 
     public SlideCursorView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        float dimension = getResources().getDimension(R.dimen.x12);
+        float dimension = getResources().getDimension(R.dimen.x12sp);
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.SlideCursorView);
         int normalTextColor = typedArray.getColor(R.styleable.SlideCursorView_normalTextColor, Color.DKGRAY);
         selectBackgroundColor = typedArray.getColor(R.styleable.SlideCursorView_selectBackgroundColor, Color.parseColor("#21969696"));
