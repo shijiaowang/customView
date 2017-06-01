@@ -19,6 +19,7 @@ public class PathItem {
     private boolean isChecked;
     private Region region;
 
+
     public boolean isChecked() {
         return isChecked;
     }
