@@ -12,7 +12,7 @@ public class Main4Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
-        final WaveView waveView = (WaveView) findViewById(R.id.wave_view);
+      /*  final WaveView waveView = (WaveView) findViewById(R.id.wave_view);
         ValueAnimator valueAnimator = ValueAnimator.ofInt(0,100);
         valueAnimator.setDuration(2000);
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -22,6 +22,6 @@ public class Main4Activity extends AppCompatActivity {
                 waveView.setProgress(animatedValue);
             }
         });
-        valueAnimator.start();
+        valueAnimator.start();*/
     }
 }

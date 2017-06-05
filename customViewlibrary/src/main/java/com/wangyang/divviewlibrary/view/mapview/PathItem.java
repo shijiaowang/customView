@@ -16,17 +16,8 @@ import android.graphics.Region;
 
 public class PathItem {
     private Path path;
-    private boolean isChecked;
     private Region region;
 
-
-    public boolean isChecked() {
-        return isChecked;
-    }
-
-    public void setChecked(boolean checked) {
-        isChecked = checked;
-    }
 
     public PathItem(Path path) {
         this.path = path;
