@@ -4,7 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DiyViewLibrary.iml" filepath="$PROJECT_DIR$/DiyViewLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/customView.iml" filepath="$PROJECT_DIR$/customView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/customView.iml" filepath="$PROJECT_DIR$/customView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/customViewlibrary/customViewlibrary.iml" filepath="$PROJECT_DIR$/customViewlibrary/customViewlibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/customViewlibrary/customViewlibrary.iml" filepath="$PROJECT_DIR$/customViewlibrary/customViewlibrary.iml" />
     </modules>
   </component>

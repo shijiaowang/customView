@@ -5,8 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.wangyang.diyviewlibrary.Main5Activity">
-   <com.wangyang.divviewlibrary.view.mapview.PathMapView
+   <!--<com.wangyang.divviewlibrary.view.mapview.PathMapView
        android:background="@color/colorPrimary"
        android:layout_width="wrap_content"
-       android:layout_height="wrap_content" />
+       android:layout_height="wrap_content" />-->
+   <com.wangyang.divviewlibrary.view.table.TableSlideView
+       app:firstRowColor="@color/colorAccent"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+   </com.wangyang.divviewlibrary.view.table.TableSlideView>
 </LinearLayout>
