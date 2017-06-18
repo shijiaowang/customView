@@ -1,14 +1,12 @@
 package com.wangyang.divviewlibrary.view.table
 
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import android.view.VelocityTracker
 import android.view.View
 import android.view.ViewConfiguration
 import android.view.ViewGroup
 import android.widget.Scroller
-import com.wangyang.divviewlibrary.R
 
 /**
  * Created by .wangyang on 2017/6/11
@@ -19,26 +17,36 @@ import com.wangyang.divviewlibrary.R
 class TableSlideView @JvmOverloads constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int = 0) : ViewGroup(context, attrs, defStyleAttr) {
     constructor(context: Context) : this(context, null)
 
-    var firstRowColor: Int
     private lateinit var widths: IntArray//宽度集合
     private lateinit var heights: IntArray//高度集合
     private var needLayout: Boolean = false //是否需要重绘制
-    private lateinit var headerView: View//第一行第一列的view
-    private var firstRowViews: List<View> = emptyList() //第一行可见view
-    private var firstColumnViews: List<View> = emptyList() //第一列可见view
-    private var bodyViews: List<List<View>> = emptyList() //其他可见view
-    private  var minimumVelocity:Int=-1 //最小速度
-    private  var maximumVelocity:Int=-1 //最大速度
-    private  var touchSlop:Int=-1 //最小移动单位
-    private lateinit var  velocityTracker:VelocityTracker//速度相关
-    private lateinit var flinger:Flinger
+    private var headerView: View? = null//第一行第一列的view
+    private var firstRowViews: ArrayList<View> = ArrayList(1)//第一行可见view
+    private var firstColumnViews: ArrayList<View> = ArrayList() //第一列可见view
+    private var bodyViews: ArrayList<ArrayList<View>> = ArrayList()//其他可见view
+    private var minimumVelocity: Int = -1 //最小速度
+    private var maximumVelocity: Int = -1 //最大速度
+    private var touchSlop: Int = -1 //最小移动单位
+    private lateinit var velocityTracker: VelocityTracker//速度相关
+    private lateinit var recycler: Recycler//回收池
+    private var flinger: Flinger
+    private var viewWidth: Int = 0// view的宽度
+    private var viewHeight: Int = 0// view的高度
+    private var slideX: Int = 0// 水平滑动的距离
+    private var slideY: Int = 0// 垂直滑动的距离
+    private var rowCount: Int = 0//行数
+    private var columnCount: Int = 0//列数
 
     var adapter: IBaseTableAdapter? = null
         set(value) {
             field = value
+            slideX =0
+            slideY =0
             widths = IntArray(value!!.rowCount)
             heights = IntArray(value.columnCount)
             needLayout = true
+            rowCount=value.rowCount
+            columnCount=value.columnCount
         }
 
     init {
@@ -47,18 +55,55 @@ class TableSlideView @JvmOverloads constructor(context: Context, attrs: Attribut
         this.touchSlop = configuration.scaledTouchSlop
         this.minimumVelocity = configuration.scaledMinimumFlingVelocity
         this.maximumVelocity = configuration.scaledMaximumFlingVelocity
+        needLayout = true
         setWillNotDraw(false)
-        setBackgroundColor(Color.YELLOW)
-        val attributes = context.obtainStyledAttributes(attrs, R.styleable.TableSlideView, defStyleAttr, 0)
-        firstRowColor = attributes.getColor(R.styleable.TableSlideView_firstRowColor, Color.YELLOW)
-        attributes.recycle()
-        setBackgroundColor(firstRowColor)
     }
 
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
         if (needLayout || changed) {
+            needLayout = false
+            resetTableView()
+            if (adapter != null) {
+                viewWidth = r - l
+                viewHeight = b - t
+                //绘制第一个view
+                var left=0
+                var top=0
+                var right=0
+                var bottom=0
+                headerView=makeView(0,0,left,top,widths[0],heights[0])
+                left=widths[0] - slideX
+                //摆放第一行
+                run {
+                    var i=0
+                    //测绘可见个数，不可见的不做处理
+                    while (i<columnCount && left<viewWidth){
+                        i++
+                        right=left+widths[i]
+                        val rowView = makeView(0, i, left, 0, right, heights[0])
+                        firstRowViews.add(rowView)
+                        left=right
+                    }
+                }
+                left=0
+                //摆放第一列
 
+
+            }
         }
+    }
+
+    private fun  makeView(row: Int, column: Int, left: Int, top: Int, right: Int, bottom: Int): View {
+
+    }
+
+    //重置
+    private fun resetTableView() {
+        headerView = null
+        firstRowViews.clear()
+        firstColumnViews.clear()
+        bodyViews.clear()
+        removeAllViews()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -114,8 +159,9 @@ class TableSlideView @JvmOverloads constructor(context: Context, attrs: Attribut
         }
         return sum
     }
+
     //惯性滑动
-    internal inner class Flinger (context: Context):Runnable{
+    internal inner class Flinger(context: Context) : Runnable {
         private val scroller: Scroller = Scroller(context)
         private var lastX = 0
         private var lastY = 0
@@ -128,6 +174,7 @@ class TableSlideView @JvmOverloads constructor(context: Context, attrs: Attribut
             lastY = initY
             post(this)
         }
+
         override fun run() {
             if (scroller.isFinished) {
                 return
@@ -148,8 +195,10 @@ class TableSlideView @JvmOverloads constructor(context: Context, attrs: Attribut
                 post(this)
             }
         }
-        internal val isFinshed:Boolean
-             get() = scroller.isFinished
+
+        internal val isFinshed: Boolean
+            get() = scroller.isFinished
+
         internal fun forceFinished() {
             if (!scroller.isFinished) {
                 scroller.forceFinished(true)

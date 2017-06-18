@@ -103,8 +103,5 @@
         <attr name="waveTextSize" format="float"/><!--进度条尺寸大小-->
         <attr name="drawTime" format="integer"/><!--多久绘制一次-->
     </declare-styleable>
-    <!--上下左右可滑动表格view-->
-    <declare-styleable name="TableSlideView">
-        <attr name="firstRowColor" format="color"/><!--第一行颜色-->
-    </declare-styleable>
+
 </resources>
