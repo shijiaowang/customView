@@ -469,7 +469,7 @@ computeVerticalScrollExtent()
     public void removeView(View view) {
         super.removeView(view);
         final int typeView = (Integer) view.getTag(R.id.tag_type_view);
-        recycler.addRecycledView(view, typeView);
+        recycler.addViewToRecycle(view, typeView);
     }
 
 
@@ -757,7 +757,7 @@ computeVerticalScrollExtent()
         //得到当前控件的类型
         int itemType=adapter.getItemViewType(row,colmun);
         //从回收池 拿到一个View
-        View reclyView=recycler.getRecyclerdView(itemType);
+        View reclyView=recycler.getViewByRecycle(itemType);
         //reclyView 可能为空
         View view=adapter.getView(row,colmun,reclyView,this);
         if (view == null) {

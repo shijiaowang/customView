@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.wangyang.diyviewlibrary.Main2Activity">
+
    <ImageView
        android:id="@+id/image"
        android:src="@drawable/xyjy"
