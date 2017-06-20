@@ -36,6 +36,9 @@ class TableSlideView @JvmOverloads constructor(context: Context, attrs: Attribut
     private var slideY: Int = 0// 垂直滑动的距离
     private var rowCount: Int = 0//行数
     private var columnCount: Int = 0//列数
+    //以下两个参数是为了标记滑动后开始的位置
+    private var firstRow = 0//第一行开始的位置
+    private var firstColumn = 0//第一列开始的位置
 
     var adapter: IBaseTableAdapter? = null
         set(value) {
@@ -75,7 +78,7 @@ class TableSlideView @JvmOverloads constructor(context: Context, attrs: Attribut
                 left=widths[0] - slideX
                 //摆放第一行
                 run {
-                    var i=0
+                    var i=firstRow
                     //测绘可见个数，不可见的不做处理
                     while (i<columnCount && left<viewWidth){
                         i++
@@ -87,6 +90,20 @@ class TableSlideView @JvmOverloads constructor(context: Context, attrs: Attribut
                 }
                 left=0
                 //摆放第一列
+                top=heights[0]-slideY
+                run{
+                    var i=firstColumn
+                    while (i<rowCount && top<viewHeight){
+                        i++
+                        bottom=top+heights[i]
+                        val colView = makeView(i,0,0,top,widths[0],bottom)
+                        firstColumnViews.add(colView)
+                        top=bottom
+                    }
+                }
+                //现在开始摆放内容
+                left=widths[0] - slideX
+                top=heights[0]-slideY
 
 
             }
